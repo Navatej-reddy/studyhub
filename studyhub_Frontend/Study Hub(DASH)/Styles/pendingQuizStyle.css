@@ -1,0 +1,159 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #000000;
+    color: #fff;
+    width: 100%;
+    padding: 2rem 0;
+    font-size: 1rem;
+    font-family: 'Comic Sans MS';
+}
+
+.header-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.home-icon {
+    position: absolute;
+    left: 11rem; /* Adjust this value based on your logo width */
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s;
+}
+
+.home-icon svg {
+    width: 2rem;
+    height: 2rem;
+    fill: white;
+}
+
+.home-icon:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.logo {
+    position: absolute;
+    left: 2rem;
+    height: 3rem;
+    width: 8rem;
+    background-color: #ebbc2d;
+    border-radius: 10px;
+}
+
+.cards {
+    font-family: 'Roboto', sans-serif;
+    padding: 6rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-direction: column;
+}
+
+.cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+    padding: 1.7rem;
+    border-radius: 10px;
+    padding-left: 6rem;
+    font-size: 1.8rem;
+    width: 65%;
+}
+
+.cards .card:nth-child(even) {
+    background-color: #fde3dd;
+}
+
+.cards .card:nth-child(odd) {
+    background-color: #c7e7fc;
+}
+
+.cards .card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px rgba(115, 115, 115, 0.528);
+    transition: all 0.2s ease-in-out;
+}
+
+.cards .card button {
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 1.6rem 5rem;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.cards .card button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(115, 115, 115, 0.528);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Responsiveness */
+
+@media (max-width: 1024px) {
+
+    .cards .card button {
+        padding: 1.2rem 3rem;
+        font-size: 1.3rem;
+    }
+
+    .cards .card {
+        padding: 1.3rem;
+        padding-left: 5rem;
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.2rem 0;
+        font-size: 0.9rem;
+    }
+
+    .cards .card button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+
+    .cards {
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards{
+        padding-top: 4rem;
+    }
+    .cards .card {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        width: 75%;
+        gap: 22px;
+    }
+
+    .cards .card button {
+        padding: 0.7rem 2rem;
+        font-size: 1.3rem;
+    }
+
+    header {
+        padding: 1.5rem 0;
+        font-size: .7rem;
+    }
+}

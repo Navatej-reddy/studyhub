@@ -1,0 +1,324 @@
+/* AskAbout.css - Matches SamplePaper.css theme */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #000000;
+    color: #fff;
+    width: 100%;
+    padding: 2rem 0;
+    font-size: 1rem;
+    font-family: 'Comic Sans MS';
+}
+
+.header-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.home-icon {
+    position: absolute;
+    left: 11rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s;
+}
+
+.home-icon svg {
+    width: 2rem;
+    height: 2rem;
+    fill: white;
+}
+
+.home-icon:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.logo {
+    position: absolute;
+    left: 2rem;
+    height: 3rem; /* Adjust based on your logo's aspect ratio */
+    width: auto; /* Let the width adjust based on height to maintain aspect ratio */
+    object-fit: contain;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* FAQ Section Styles */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.faq-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: #000;
+    font-weight: 600;
+}
+
+.faq-item {
+    margin-bottom: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    padding: 1.5rem;
+    background-color: #f8f8f8;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #eee;
+}
+
+.faq-answer {
+    padding: 1.5rem;
+    background-color: white;
+    display: none;
+    animation: fadeIn 0.3s;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-question {
+    background-color: #ebbc2d;
+    color: #000;
+    font-weight: bold;
+}
+
+.faq-question span:last-child {
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question span:last-child {
+    transform: rotate(180deg);
+}
+
+/* Contact Form Styles */
+.contact-form {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+}
+
+.contact-form h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #000;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #ebbc2d;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Poppins";
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    font-weight: 500;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+    transform: scale(1.02);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .home-icon {
+        left: 8rem;
+    }
+    
+    .faq-question {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+    }
+    
+    .faq-answer {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.8rem 0;
+        font-size: 0.9rem;
+    }
+    
+    .home-icon {
+        left: 6rem;
+    }
+    
+    .home-icon svg {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    
+    .logo {
+        height: 2.5rem;
+        width: 7rem;
+    }
+    
+    .faq-container h2,
+    .contact-form h2 {
+        font-size: 1.5rem;
+    }
+    
+    .faq-question {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .faq-answer {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .form-group label {
+        font-size: 1rem;
+    }
+    
+    .submit-btn {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: 1.5rem 0;
+        font-size: 0.7rem;
+    }
+    
+    .home-icon {
+        left: 4rem;
+    }
+    
+    .home-icon svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .logo {
+        height: 2rem;
+        width: 6rem;
+        left: 1rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .faq-container h2,
+    .contact-form h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .faq-question {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .submit-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+}

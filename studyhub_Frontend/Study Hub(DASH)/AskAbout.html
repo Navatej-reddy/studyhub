@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask About - Sample Paper</title>
+    <link rel="stylesheet" href="Styles/SamplePaper.css">
+    <link rel="stylesheet" href="Styles/AskAbout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="images/Logo.png" alt="Website Logo" class="logo">
+            <h1>Ask About</h1>
+            <a href="homepage.html" class="home-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                    <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I access the sample papers?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can access the sample papers by selecting the appropriate subject tab from the main page. Once you've selected a subject, all available papers for that subject will be displayed. Click on the "View" button to open the paper.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Are these papers officially provided by educational institutions?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our collection includes both official papers provided by educational institutions and high-quality practice papers created by educators. Each paper is clearly labeled with its source.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How often is new content added?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We add new content at the beginning of each academic term. Major updates occur in September and January, with smaller updates throughout the year as new materials become available.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is there a mobile app available?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Currently, we don't have a dedicated mobile app, but our website is fully responsive and works well on all mobile devices. You can add it to your home screen for quick access.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I contribute my own sample papers?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We welcome contributions from educators. Please use the contact form below to get in touch with us about contributing materials. All submissions will be reviewed for quality and relevance before being added.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h2>Still Have Questions?</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="general">General Inquiry</option>
+                        <option value="technical">Technical Support</option>
+                        <option value="contribution">Content Contribution</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // Toggle the +/- icon
+                const icon = question.querySelector('span:last-child');
+                icon.textContent = item.classList.contains('active') ? '-' : '+';
+            });
+        });
+        
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

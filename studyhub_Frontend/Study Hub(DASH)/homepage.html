@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/homepage.css">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <nav>
+        <div >
+            <img src="images/Logo.png" class="logo">
+        </div>
+        <ul>
+            <li><a href="studyMaterial.html">Study Meterials</a></li>
+            <li><a href="SamplePaper.html">Sample Papers</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="score.html">Score Data</a></li>
+            <li><a href="AskAbout.html">Ask Abouts</a></li> 
+        </ul>
+        <div class="userLogo">
+            <a href="Profile.html" class="profile-link">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256"
+                height="256" viewBox="0 0 256 256" xml:space="preserve">
+                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                    transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                    <path
+                        d="M 45 0 C 20.147 0 0 20.147 0 45 c 0 24.853 20.147 45 45 45 s 45 -20.147 45 -45 C 90 20.147 69.853 0 45 0 z M 45 22.007 c 8.899 0 16.14 7.241 16.14 16.14 c 0 8.9 -7.241 16.14 -16.14 16.14 c -8.9 0 -16.14 -7.24 -16.14 -16.14 C 28.86 29.248 36.1 22.007 45 22.007 z M 45 83.843 c -11.135 0 -21.123 -4.885 -27.957 -12.623 c 3.177 -5.75 8.144 -10.476 14.05 -13.341 c 2.009 -0.974 4.354 -0.958 6.435 0.041 c 2.343 1.126 4.857 1.696 7.473 1.696 c 2.615 0 5.13 -0.571 7.473 -1.696 c 2.083 -1 4.428 -1.015 6.435 -0.041 c 5.906 2.864 10.872 7.591 14.049 13.341 C 66.123 78.957 56.135 83.843 45 83.843 z"
+                        style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #d27da0; fill-rule: nonzero; opacity: 1;"
+                        transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                </g>
+            </svg>
+            <span class="tooltip">Visit Profile</span>
+            </a>
+        </div>
+    </nav>
+    <div class="title">
+        Student Dashboard
+    </div>
+    <div class="main">
+        <div class="classLevel box">
+            <h2>Score Data</h2>
+            <div class="dataContainer">
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">1</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">2</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">3</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">4</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">5</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">6</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">7</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">8</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">9</p>
+                </div>
+                <div class="data">
+                    <p class="user">xxxxxxxxxxxxx xxx xx</p>
+                    <p class="percent">0%</p>
+                    <p class="sNo">10</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="practiceContainer">
+            <div class="top">Practice By Quiz</div>
+            <div class="middle">
+                <div class="left">
+                    <div onclick="redirectToQuiz('Maths')" style="cursor: pointer;">
+                        <span>Maths</span><img src="images/2.png" alt="">
+                    </div>
+                    <div onclick="redirectToQuiz('Social')" style="cursor: pointer;">
+                        <span>Social</span><img src="images/4.png" alt="">
+                    </div>
+                    <div>
+                        <span>School Test</span>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div onclick="redirectToQuiz('Science')" style="cursor: pointer;">
+                        <span>Science</span><img src="images/3.png" alt="">
+                    </div>
+                    <div onclick="redirectToQuiz('General')" style="cursor: pointer;">
+                        <img src="images/5.png" alt="">
+                    </div>
+                    <div onclick="redirectToPending()" style="cursor: pointer;">
+                        <span>Pending</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">Attemt Quiz To Appear In Score Data</div>
+        </div>
+
+        <div class="rewards rbox">
+            <h2>Rewards And Winnings</h2>
+            <div class="dataContainer">
+                <div class="data">
+                    <p class="userno">Quiz Attempts</p>
+                    <div class="score">
+                        <p class="percent">000</p>
+                        <div class="coin">
+                            <img src="images/1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="data">
+                    <p class="userno">Doubts Asked</p>
+                    <div class="score">
+                        <p class="percent">000</p>
+                        <div class="coin">
+                            <img src="images/1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="data">
+                    <p class="userno">Log ins</p>
+                    <div class="score">
+                        <p class="percent">000</p>
+                        <div class="coin">
+                            <img src="images/1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="data">
+                    <p class="userno">High Score</p>
+                    <div class="score">
+                        <p class="percent">000</p>
+                        <div class="coin">
+                            <img src="images/1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="data">
+                    <p class="userno">High Score</p>
+                    <div class="score">
+                        <p class="percent">000</p>
+                        <div class="coin">
+                            <img src="images/1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="total">
+                    <div class="data">
+                        <p class="userno">TOTAL</p>
+                        <div class="score">
+                            <p class="percent">000</p>
+                            <div class="coin">
+                            <img src="images/1.png" alt="">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="school">
+        <div class="image">
+            <img src="images/6.png" alt="">
+        </div>
+        <h1>xxx xxx Public School</h1>
+    </div>
+
+    <script>
+        document.querySelector('.profile-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Add any animation or transition here if needed
+            setTimeout(() => {
+                window.location.href = this.getAttribute('href');
+            }, 200); // Small delay for visual feedback
+        });
+
+    // Function to redirect to quiz.html with subject parameter
+    function redirectToQuiz(subject) {
+        // Store the selected subject in localStorage or pass as URL parameter
+        localStorage.setItem('selectedQuizSubject', subject);
+        // Redirect to quiz page
+        window.location.href = 'quiz.html';
+    }
+    
+    function redirectToPending() {
+        window.location.href = "pendingQuiz.html";
+    }
+
+    // Existing profile link click handler
+    document.querySelector('.profile-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        setTimeout(() => {
+            window.location.href = this.getAttribute('href');
+        }, 200);
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/quiz.css">
+    <title>Quiz</title>
+
+    <style>
+        .chapter-list {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+        .chapter-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .chapter-item:hover {
+            background-color: #ebbc2d;
+        }
+        .active-subject {
+            background-color: #ebbc2d;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="images/Logo.png" class="logo">
+        <a href="homepage.html" class="home-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="36px" height="36px">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+        </a>
+        <h1>Quiz</h1>
+    </header>
+    <div class="container">
+        <div class="practiceContainer">
+            <div class="top">Practice By Quiz</div>
+            <div class="middle">
+                <div class="left">
+                    <div onclick="showChapters('Maths')" class="subject-btn">
+                        <span>Maths</span><img src="images/2.png" alt="">
+                    </div>
+                    <div onclick="showChapters('Social')" class="subject-btn">
+                        <span>Social</span><img src="images/4.png" alt="">
+                    </div>
+                    <div>
+                        <span>School Test</span>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div onclick="showChapters('Science')" class="subject-btn">
+                        <span>Science</span><img src="images/3.png" alt="">
+                    </div>
+                    <div onclick="showChapters('General')" class="subject-btn">
+                        <img src="images/5.png" alt="">
+                    </div>
+                    <div onclick="redirectToPending()" style="cursor: pointer;">
+                        <span>Pending</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">Attemt Quiz To Appear In Score Data</div>
+            
+        </div>
+        <div class="radioContainer">
+            
+            <div class="choose">
+                <div>
+                    <label>Easy</label> <input type="radio" name="level" id="">
+                </div>
+                <div>
+                    <label>Normal</label> <input type="radio" name="level" id="">
+                </div>
+                <div>
+                    <label>Hard</label> <input type="radio" name="level" id="">
+                </div>
+            </div>
+            <div id="chapterList" class="chapter-list"></div>
+            <div>
+                 <button id="startButton">Start Now</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Store selected values
+        let selectedSubject = null;
+        let selectedChapter = null;
+        let selectedLevel = null;
+
+        // Subject-specific chapters data
+        const chaptersData = {
+            'Maths': ['Algebra Basics', 'Geometry Fundamentals', 'Trigonometry Introduction'],
+            'Science': ['Physics: Motion', 'Chemistry: Atoms', 'Biology: Cells'],
+            'Social': ['History: Ancient Civilizations', 'Geography: Maps', 'Civics: Government'],
+            'General': ['General Knowledge 1', 'Current Affairs', 'Logical Reasoning']
+        };
+
+        function showChapters(subject) {
+            selectedSubject = subject;
+            selectedChapter = null; // Reset chapter when changing subject
+            
+            // Remove active class from all subject buttons
+            document.querySelectorAll('.subject-btn').forEach(btn => {
+                btn.classList.remove('active-subject');
+            });
+            
+            // Add active class to clicked subject
+            event.currentTarget.classList.add('active-subject');
+            
+            const chapterList = document.getElementById('chapterList');
+            chapterList.innerHTML = '';
+            
+            // Create and append chapter items
+            chaptersData[subject].forEach(chapter => {
+                const chapterItem = document.createElement('div');
+                chapterItem.className = 'chapter-item';
+                chapterItem.textContent = chapter;
+                chapterItem.onclick = function() {
+                    // Remove active class from all chapters
+                    document.querySelectorAll('.chapter-item').forEach(item => {
+                        item.classList.remove('active-chapter');
+                    });
+                    // Add active class to clicked chapter
+                    this.classList.add('active-chapter');
+                    selectedChapter = chapter;
+                };
+                chapterList.appendChild(chapterItem);
+            });
+            
+            // Show the chapter list
+            chapterList.style.display = 'block';
+        }
+        <!-- funtion to redirect to pending.html -->
+        function redirectToPending() {
+            window.location.href = "pendingQuiz.html";
+        }
+
+        // Add event listeners for difficulty levels
+        document.querySelectorAll('input[name="level"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                selectedLevel = this.value;
+            });
+        });
+
+        document.getElementById('startButton').addEventListener('click', function () {
+    if (!selectedSubject) {
+        alert('Please select a subject first');
+        return;
+    }
+    if (!selectedChapter) {
+        alert('Please select a chapter');
+        return;
+    }
+    if (!selectedLevel) {
+        alert('Please select a difficulty level');
+        return;
+    }
+
+    // Dummy mapping for subject/chapter to IDs
+    const subjectMap = {
+        'Mathematics': 1,
+        'Science': 2,
+        'English': 3,
+    };
+
+    const topicMap = {
+        'Algebra Basics': 1,
+        'Geometry Fundamentals': 2,
+        'Trigonometry Introduction': 3,
+        'Physics: Motion': 4,
+        'Chemistry: Atoms': 5,
+        'Biology: Cells': 6,
+        'History: Ancient Civilizations': 7,
+        'Geography: Maps': 8,
+        'Civics: Government': 9,
+        'General Knowledge 1': 10,
+        'Current Affairs': 11,
+        'Logical Reasoning': 12
+    };
+
+    const payload = {
+        studentId: 1,
+        subjectId: subjectMap[selectedSubject],
+        topicId: topicMap[selectedChapter],
+        subtopicId: 1, // You can dynamically assign this if needed
+        difficulty: selectedLevel,
+        score: null,
+        numQuestions: 8,
+        startTime: new Date().toISOString() // Or use a fixed time if needed
+    };
+
+    fetch('http://localhost:8080/api/quiz/start', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Quiz started:', data);
+        alert(`Quiz started successfully!`);
+        // Optionally redirect or update UI
+    })
+    .catch(error => {
+        console.error('Error starting quiz:', error);
+        alert('Failed to start quiz. Please try again.');
+    });
+});
+    </script>
+</body>
+
+</html>

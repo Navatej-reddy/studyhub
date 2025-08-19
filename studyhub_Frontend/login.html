@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="./Style/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+<body>
+<div class="login-container">
+  <h2>Welcome Back</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required
+           pattern="[A-Za-z]+"
+           title="Please enter alphabets only (no numbers or special characters)">
+
+    <div class="password-wrapper">
+      <input type="password" id="password" placeholder="Password" required>
+      <div class="toggle-container">
+        <i class="fas fa-eye" id="togglePassword"></i>
+      </div>
+    </div>
+
+    <div class="remember-me">
+      <input type="checkbox" id="remember">
+      <label for="remember">Remember Me</label>
+    </div>
+
+    <p class="error-message" id="errorMessage">Invalid username or password.</p>
+
+    <button type="submit">Log In</button>
+
+  </form>
+  <div class="footer" style="font-size: large;">
+    New here? <a href="signup.html" style="color: yellow; font-size:large">Sign up</a> now
+  </div>
+
+</div>
+
+<script>
+  const togglePassword = document.getElementById('togglePassword');
+  const password = document.getElementById('password');
+  const loginForm = document.getElementById('loginForm');
+  const errorMessage = document.getElementById('errorMessage');
+
+  togglePassword.addEventListener('click', () => {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    togglePassword.classList.toggle('fa-eye');
+    togglePassword.classList.toggle('fa-eye-slash');
+  });
+
+  // Username field - allow only alphabets
+  document.getElementById('username').addEventListener('input', function(e) {
+    this.value = this.value.replace(/[^A-Za-z]/g, '');
+  });
+
+// Prevent pasting non-alphabet characters
+document.getElementById('username').addEventListener('paste', function(e) {
+e.preventDefault();
+const pasteData = e.clipboardData.getData('text/plain').replace(/[^A-Za-z]/g, '');
+document.execCommand('insertText', false, pasteData);
+});
+
+ loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const pwd = password.value.trim();
+
+    fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: username, password: pwd })
+    })
+    .then(response => response.json())
+    .then(success => {
+      if (success) {
+        errorMessage.style.display = 'none';
+        window.location.href = "../Study%20Hub(DASH)/homepage.html";
+      } else {
+        errorMessage.style.display = 'block';
+      }
+    })
+    .catch(() => {
+      errorMessage.style.display = 'block';
+    });
+  });
+</script>
+
+</body>
+</html>

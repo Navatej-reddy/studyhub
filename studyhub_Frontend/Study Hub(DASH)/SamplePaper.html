@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Papers</title>
+    <link rel="stylesheet" href="Styles/SamplePaper.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="homepage.html" class="home-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+            </a>
+            <img src="images/Logo.png" class="logo">
+            <h1>Sample Papers</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="subject-tabs">
+            <button class="tab-button active" onclick="openSubject(event, 'physics')">Physics</button>
+            <button class="tab-button" onclick="openSubject(event, 'chemistry')">Chemistry</button>
+            <button class="tab-button" onclick="openSubject(event, 'math')">Math</button>
+            <button class="tab-button" onclick="openSubject(event, 'biology')">Biology</button>
+        </div>
+
+        <div id="physics" class="subject-content" style="display: block;">
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Physics Paper 1 (2023)</h3>
+                    <p>Final Term Examination</p>
+                    <p>Total Marks: 100</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Physics Paper 2 (2022)</h3>
+                    <p>Annual Examination</p>
+                    <p>Total Marks: 100</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Physics Paper 3 (2021)</h3>
+                    <p>Mid Term Examination</p>
+                    <p>Total Marks: 70</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+        </div>
+
+        <div id="chemistry" class="subject-content">
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Chemistry Paper 1 (2023)</h3>
+                    <p>Final Term Examination</p>
+                    <p>Total Marks: 100</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Chemistry Paper 2 (2022)</h3>
+                    <p>Annual Examination</p>
+                    <p>Total Marks: 100</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Chemistry Paper 3 (2021)</h3>
+                    <p>Mid Term Examination</p>
+                    <p>Total Marks: 70</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+        </div>
+
+        <div id="math" class="subject-content">
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Math Paper 1 (2023)</h3>
+                    <p>Final Term Examination</p>
+                    <p>Total Marks: 100</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Math Paper 2 (2022)</h3>
+                    <p>Annual Examination</p>
+                    <p>Total Marks: 100</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Math Paper 3 (2021)</h3>
+                    <p>Mid Term Examination</p>
+                    <p>Total Marks: 70</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+        </div>
+
+        <div id="biology" class="subject-content">
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Biology Paper 1 (2023)</h3>
+                    <p>Final Term Examination</p>
+                    <p>Total Marks: 100</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Biology Paper 2 (2022)</h3>
+                    <p>Annual Examination</p>
+                    <p>Total Marks: 100</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+            <div class="paper-card">
+                <div class="paper-info">
+                    <h3>Biology Paper 3 (2021)</h3>
+                    <p>Mid Term Examination</p>
+                    <p>Total Marks: 70</p>
+                </div>
+                <button class="view-btn">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openSubject(evt, subjectName) {
+            // Hide all subject contents
+            const contents = document.getElementsByClassName("subject-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].style.display = "none";
+            }
+            
+            // Remove active class from all buttons
+            const buttons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].className = buttons[i].className.replace(" active", "");
+            }
+            
+            // Show the current tab and add active class
+            document.getElementById(subjectName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Add click event for view buttons
+        document.querySelectorAll('.view-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // In a real implementation, this would open the PDF
+                alert('This would open the PDF viewer for the selected paper');
+            });
+        });
+    </script>
+</body>
+</html>
