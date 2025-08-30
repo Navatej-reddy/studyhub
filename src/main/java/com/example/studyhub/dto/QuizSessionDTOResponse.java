@@ -25,7 +25,6 @@ public class QuizSessionDTOResponse {
         dto.studentId = session.getStudent().getStudentId();
         dto.subjectId = session.getSubject().getSubjectId();
         dto.topicId = session.getTopic().getTopicId();
-        dto.subtopicId = session.getSubtopic().getSubtopicId();
         dto.difficulty = session.getDifficulty().name();
         dto.score = session.getScore();
         dto.startTime = session.getStartTime();

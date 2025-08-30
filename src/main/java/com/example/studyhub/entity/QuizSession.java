@@ -28,10 +28,6 @@ public class QuizSession {
     @JoinColumn(name = "topic_id", nullable = false)
     private Topic topic;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "subtopic_id", nullable = false)
-    private Subtopic subtopic;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Difficulty difficulty;

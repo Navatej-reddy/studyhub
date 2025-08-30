@@ -8,7 +8,6 @@ public class QuizSessionDTORequest {
     private Long studentId;
     private Long subjectId;
     private Long topicId;
-    private Long subtopicId;
     private String difficulty;
     private Integer score;
     private Integer numQuestions;

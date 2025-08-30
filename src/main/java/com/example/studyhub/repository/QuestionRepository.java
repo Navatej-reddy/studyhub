@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-    @Query(value = "SELECT q.question_id FROM question q WHERE q.subtopic_id = :subtopicId AND q.difficulty = :difficulty AND q.class_grade = :classGrade", nativeQuery = true)
-    List<Long> findIdsByFiltersNative(@Param("subtopicId") Long subtopicId,
+    @Query(value = "SELECT q.question_id FROM question q WHERE q.topic_id = :topicId AND q.difficulty = :difficulty AND q.class_grade = :classGrade", nativeQuery = true)
+    List<Long> findIdsByFiltersNative(@Param("topicId") Long topicId,
                                       @Param("difficulty") String difficulty,
                                       @Param("classGrade") Integer classGrade);
 

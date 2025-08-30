@@ -26,7 +26,6 @@ public class QuizServiceImpl implements QuizService {
     private final LeaderboardRepository leaderboardRepo;
     private final SubjectRepository subjectRepository;
     private final TopicRepository topicRepository;
-    private final SubtopicRepository subtopicRepository;
 
     @Autowired
     public QuizServiceImpl(QuestionRepository questionRepo,
@@ -36,8 +35,8 @@ public class QuizServiceImpl implements QuizService {
                        StudentActivityRepository activityRepo,
                        LeaderboardRepository leaderboardRepo,
                            SubjectRepository subjectRepository,
-                           TopicRepository topicRepository,
-                           SubtopicRepository subtopicRepository) {
+                           TopicRepository topicRepository
+                           ) {
         this.questionRepo = questionRepo;
         this.quizSessionRepo = quizSessionRepo;
         this.attemptRepo = attemptRepo;
@@ -46,7 +45,6 @@ public class QuizServiceImpl implements QuizService {
         this.leaderboardRepo = leaderboardRepo;
         this.subjectRepository = subjectRepository;
         this.topicRepository = topicRepository;
-        this.subtopicRepository = subtopicRepository;
     }
 
     // Start quiz: choose N random questions and persist QuizSession + QuizAttemptDetail
@@ -64,14 +62,10 @@ public class QuizServiceImpl implements QuizService {
         Topic topic = topicRepository.findById(request.getTopicId())
                 .orElseThrow(() -> new RuntimeException("Topic not found"));
 
-        Subtopic subtopic = subtopicRepository.findById(request.getSubtopicId())
-                .orElseThrow(() -> new RuntimeException("Subtopic not found"));
-
         QuizSession quizSession = QuizSession.builder()
                 .student(student)
                 .subject(subject)
                 .topic(topic)
-                .subtopic(subtopic)
                 .difficulty(Difficulty.valueOf(request.getDifficulty().toUpperCase()))
                 .score(request.getScore())
                 .startTime(LocalDateTime.now())
@@ -80,7 +74,7 @@ public class QuizServiceImpl implements QuizService {
 
         // Fetch candidate question IDs efficiently
         List<Long> candidateIds = questionRepo.findIdsByFiltersNative(
-                request.getSubtopicId(), request.getDifficulty().toUpperCase(), student.getClassGrade());
+                request.getTopicId(), request.getDifficulty().toUpperCase(), student.getClassGrade());
 
         if (candidateIds.isEmpty())
             throw new IllegalStateException("No questions available for selected filters");
@@ -123,7 +117,7 @@ public class QuizServiceImpl implements QuizService {
         return QuizSessionDTOResponse.from(quizSession, questionAttemptDTOs);
     }
 
-//    // Record answer for a single attempt (could be called per-question)
+    // Record answer for a single attempt (could be called per-question)
     @Transactional
     public void submitAnswer(Long attemptId, String answer) {
         QuizAttemptDetail attempt = attemptRepo.findById(attemptId)
