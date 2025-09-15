@@ -142,7 +142,7 @@ public class QuizServiceImpl implements QuizService {
 
         List<QuizAttemptDetail> attempts = attemptRepo.findByQuizSession_QuizId(quizId);
 
-        // compute score: count isCorrect = true
+        //1 compute score: count isCorrect = true
         int score = (int) attempts.stream()
                 .filter(a -> Boolean.TRUE.equals(a.getIsCorrect()))
                 .count();
@@ -151,21 +151,24 @@ public class QuizServiceImpl implements QuizService {
         session.setEndTime(LocalDateTime.now());
         quizSessionRepo.save(session);
 
-        // Update StudentActivity
+        //2 Update StudentActivity
         StudentActivity activity = activityRepo.findByStudent_StudentId(session.getStudent().getStudentId())
                 .orElseGet(() -> {
                     StudentActivity sa = new StudentActivity();
                     sa.setStudent(session.getStudent());
                     return sa;
                 });
-        activity.setHighScore(Math.max(activity.getHighScore() == null ? 0 : activity.getHighScore(), score));
+
+        //2.1 adding the current session score to previous score
+        activity.setHighScore(activity.getHighScore() == null ? 0 : activity.getHighScore() + score);
         activityRepo.save(activity);
 
-        // Update Leaderboard: add to totalScore or insert
+        //3 Update Leaderboard: find the student school and grade using session
         Student student = studentRepo.findById(session.getStudent().getStudentId()).get();
         Long schoolId = student.getSchool().getSchoolId();
         Integer classGrade = student.getClassGrade();
 
+        //3.1 just checking if the student exists in the table else creating a new record for thatstudent
         Leaderboard lb = leaderboardRepo.findByStudent_StudentIdAndClassGradeAndSchool_SchoolId(
                         session.getStudent().getStudentId(), classGrade, schoolId)
                 .orElseGet(() -> {
@@ -177,6 +180,7 @@ public class QuizServiceImpl implements QuizService {
                     return newLb;
                 });
 
+        //3.2 adding current score to total_score
         lb.setTotalScore((lb.getTotalScore() == null ? 0 : lb.getTotalScore()) + score);
         //lb.setLastUpdated(new Timestamp(System.currentTimeMillis()));
         leaderboardRepo.save(lb);

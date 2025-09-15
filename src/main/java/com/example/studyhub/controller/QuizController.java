@@ -6,8 +6,7 @@ import com.example.studyhub.dto.QuizSessionDTOResponse;
 import com.example.studyhub.service.QuizService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+
 
 @RestController
 @RequestMapping("/api/quiz")
